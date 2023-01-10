@@ -39,6 +39,9 @@ jobs:
     - name: Curent folder
       run: pwd
 
+    - name: List
+      run: ls
+
     - name: Restore dependencies
       run: dotnet restore $env:SolutionPath
             
