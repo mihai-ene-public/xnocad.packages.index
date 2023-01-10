@@ -50,7 +50,7 @@ jobs:
             
     - name: Build
       #run: dotnet build --configuration Release --no-restore $env:SolutionPath
-      run: dotnet build --configuration Release $env:SolutionPath
+      run: dotnet build --configuration Release source/IndexBuild/IndexBuild.sln
       #if: ${{true}}
             
     - name: Test
