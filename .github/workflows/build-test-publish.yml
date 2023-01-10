@@ -45,11 +45,12 @@ jobs:
     - name: List
       run: ls source/IndexBuild
 
-    - name: Restore dependencies
-      run: dotnet restore $env:SolutionPath
+    #- name: Restore dependencies
+    #  run: dotnet restore $env:SolutionPath
             
     - name: Build
-      run: dotnet build --configuration Release --no-restore $env:SolutionPath
+      #run: dotnet build --configuration Release --no-restore $env:SolutionPath
+      run: dotnet build --configuration Release $env:SolutionPath
       #if: ${{true}}
             
     - name: Test
@@ -57,7 +58,8 @@ jobs:
       #if: ${{false}}
  
     - name: Publish
-      run: dotnet publish -c $env:_Configuration -r $env:_Platform --no-restore -p:PublishSingleFile=true --self-contained $env:ProjectPath
+      #run: dotnet publish -c $env:_Configuration -r $env:_Platform --no-restore -p:PublishSingleFile=true --self-contained $env:ProjectPath
+      run: dotnet publish -c $env:_Configuration -r $env:_Platform -p:PublishSingleFile=true --self-contained $env:ProjectPath
 
     - name: Copy into tools folder
       run: cp /source/IndexBuild/IndexBuilder/bin/Release/net7.0/publish/linux-x64/IndexBuilder /tools
