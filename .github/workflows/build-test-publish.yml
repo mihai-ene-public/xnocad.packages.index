@@ -50,7 +50,7 @@ jobs:
  
     - name: Publish
       #run: dotnet publish -c $_Configuration -r $_Platform --no-restore -p:PublishSingleFile=true --self-contained $ProjectPath
-      run: dotnet publish -c $_Configuration -r $_Platform -p:PublishSingleFile=true --self-contained $ProjectPath
+      run: dotnet publish -c $_Configuration -r $_Platform -p:PublishSingleFile=true -p:PublishTrimmed=True --self-contained $ProjectPath
 
     - name: List
       run: ls source/IndexBuild/IndexBuilder/bin/Release/net7.0/linux-x64/publish
