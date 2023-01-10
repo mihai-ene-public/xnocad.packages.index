@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      SolutionPath: source/IndexBuild/IndexBuild.sln
-      ProjectPath: source/IndexBuild/IndexBuilder/IndexBuilder.csproj
+      SolutionPath: /source/IndexBuild/IndexBuild.sln
+      ProjectPath: /source/IndexBuild/IndexBuilder/IndexBuilder.csproj
       _Configuration: Release
       _Platform: linux-x64
       #_Platform: win-x64
