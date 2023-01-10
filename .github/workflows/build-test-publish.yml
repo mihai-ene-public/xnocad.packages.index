@@ -37,7 +37,7 @@ jobs:
         dotnet-version: 7.0.x
        
     - name: Curent folder
-      run: PWD
+      run: pwd
 
     - name: Restore dependencies
       run: dotnet restore $env:SolutionPath
