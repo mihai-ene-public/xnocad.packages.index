@@ -59,7 +59,7 @@ jobs:
  
     - name: Publish
       #run: dotnet publish -c $_Configuration -r $_Platform --no-restore -p:PublishSingleFile=true --self-contained $ProjectPath
-      run: dotnet publish -c $env:_Configuration -r $env:_Platform -p:PublishSingleFile=true --self-contained $env:ProjectPath
+      run: dotnet publish -c $_Configuration -r $_Platform -p:PublishSingleFile=true --self-contained $ProjectPath
 
     - name: Copy into tools folder
       run: cp /source/IndexBuild/IndexBuilder/bin/Release/net7.0/publish/linux-x64/IndexBuilder /tools
