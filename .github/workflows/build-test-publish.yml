@@ -43,7 +43,7 @@ jobs:
       run: ls
 
     - name: List
-      run: ls source
+      run: ls source/IndexBuild
 
     - name: Restore dependencies
       run: dotnet restore $env:SolutionPath
