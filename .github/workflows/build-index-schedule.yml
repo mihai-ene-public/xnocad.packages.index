@@ -24,7 +24,7 @@ jobs:
     
 
     - name: Run index tool
-      run: tools/IndexBuilder ../repositories.txt ../index.json
+      run: tools/IndexBuilder repositories.txt index.json
       
     - name: Commit & Push changes
       uses: actions-js/push@master
