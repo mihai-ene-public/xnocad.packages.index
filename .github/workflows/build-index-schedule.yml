@@ -1,0 +1,30 @@
+# Rebuild index on a time interval schedule (e.g. every hour)
+name: Build index on a schedule
+
+on:
+  schedule:
+  - cron: "30 * * * *" # every hour at 30 minutes past the hour (10:30, 11:30 etc)
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      SolutionPath: source/IndexBuild/IndexBuild.sln
+      ProjectPath: source/IndexBuild/IndexBuilder/IndexBuilder.csproj
+      _Configuration: Release
+      _Platform: linux-x64
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+
+    - name: Run index tool
+      run: tools/IndexBuilder ../repositories.txt ../index.json
+      
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}

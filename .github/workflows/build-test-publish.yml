@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'source/**' 
-      - '.github/**' 
+      - '.github/workflows/build-test-publish.yml' 
   pull_request:
     branches: [ "main" ]
     paths:
@@ -17,7 +17,6 @@ on:
 jobs:
   build:
 
-    #runs-on: windows-latest
     runs-on: ubuntu-latest
     
     env:
@@ -25,7 +24,6 @@ jobs:
       ProjectPath: source/IndexBuild/IndexBuilder/IndexBuilder.csproj
       _Configuration: Release
       _Platform: linux-x64
-      #_Platform: win-x64
       
     steps:
     - name: Checkout
@@ -51,9 +49,6 @@ jobs:
     - name: Publish
       #run: dotnet publish -c $_Configuration -r $_Platform --no-restore -p:PublishSingleFile=true --self-contained $ProjectPath
       run: dotnet publish -c $_Configuration -r $_Platform -p:PublishSingleFile=true -p:PublishTrimmed=True --self-contained $ProjectPath
-
-    - name: List
-      run: ls source/IndexBuild/IndexBuilder/bin/Release/net7.0/linux-x64/publish
 
     - name: Copy into tools folder
       run: |
