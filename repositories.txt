@@ -1,1 +1,1 @@
-System.Libraries:https://github.com/mihai-ene-public/xnocad.System.Libraries/tree/main/_packages
+System.Libraries|https://github.com/mihai-ene-public/xnocad.System.Libraries/tree/main/_packages
