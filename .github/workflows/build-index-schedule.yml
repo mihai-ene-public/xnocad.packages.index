@@ -5,6 +5,8 @@ on:
   schedule:
   - cron: "30 * * * *" # every hour at 30 minutes past the hour (10:30, 11:30 etc)
 
+  workflow_dispatch:
+
 jobs:
   build:
 
