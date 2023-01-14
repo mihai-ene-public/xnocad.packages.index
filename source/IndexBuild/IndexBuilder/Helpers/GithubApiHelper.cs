@@ -1,4 +1,5 @@
 ﻿using IndexBuilder.Models;
+using System;
 using System.Collections.Generic;
 using System.IO.Compression;
 using System.Net.Http.Json;
@@ -18,14 +19,6 @@ public class GithubApiHelper
     public async Task<PackageInfo?> GetPackage(RepositoryInfo repositoryInfo)
     {
         var folderContentsUrl = $"https://api.github.com/repos/{repositoryInfo.UserName}/{repositoryInfo.RepositoryName}/contents/{repositoryInfo.FolderName}";
-
-        //var response = await _client.GetAsync(folderContentsUrl);
-
-        //response.EnsureSuccessStatusCode();
-        // var folderContents = await response.Content.ReadFromJsonAsync<List<FolderResponseInfo>>();
-
-        //var contentString = await response.Content.ReadAsStringAsync();
-        //return null;
 
         var folderContents = await _client.GetFromJsonAsync<List<FolderResponseInfo>>(folderContentsUrl);
 
@@ -73,6 +66,7 @@ public class GithubApiHelper
                 package.Icon = packInfo.Icon;
                 package.ProjectUrl = packInfo.ProjectUrl;
                 package.Tags = packInfo.Tags;
+                package.PackageFolder = GetPackageFolder(item.DownloadUrl);
 
                 package.Versions.Add(packInfo.Version);
             }
@@ -86,6 +80,13 @@ public class GithubApiHelper
             return null;
 
         return package;
+    }
+
+    private string GetPackageFolder(string packageFileUrl)
+    {
+        var uri = new Uri(packageFileUrl);
+        var newUri = new Uri(uri, Path.GetDirectoryName(uri.AbsolutePath));
+        return newUri.AbsoluteUri;
     }
 
     private async Task<string> DownloadFile(FolderResponseInfo item)

@@ -1,4 +1,5 @@
 using IndexBuilder.Helpers;
+using static System.Net.WebRequestMethods;
 
 namespace IndexBuilder.Tests;
 
@@ -29,5 +30,15 @@ public class RepositoryParserTests
         Assert.Equal(expectedRepoName, info.RepositoryName);
         Assert.Equal(expectedBranchName, info.BranchName);
         Assert.Equal(expectedFolderName, info.FolderName);
+    }
+
+    [Fact]
+    public void Test()
+    {
+        var url = "https://raw.githubusercontent.com/mihai-ene-public/xnocad.System.Libraries/main/_packages/System.Libraries.0.2.0-preview.package";
+
+        var uri = new Uri(url);
+        var newUri = new Uri(uri, Path.GetDirectoryName(uri.AbsolutePath));
+        var folder = newUri.AbsoluteUri;
     }
 }

@@ -8,6 +8,7 @@ public class PackageInfo
     public string ProjectUrl { get; set; }
     public string Authors { get; set; }
     public string Tags { get; set; }
+    public string PackageFolder { get; set; }
 
     public IList<string> Versions { get; set; } = new List<string>();
 }
