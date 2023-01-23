@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "packageId": "System.Libraries",
+    "description": "These are the default libraries used by xnocad (https://github.com/mihai-ene-public/cadide)",
+    "icon": null,
+    "projectUrl": "https://github.com/mihai-ene-public/xnocad.System.Libraries",
+    "authors": "xnocad",
+    "tags": "library xnocad",
+    "packageFolder": "https://raw.githubusercontent.com/mihai-ene-public/xnocad.System.Libraries/main/_packages",
+    "versions": [
+      "0.2.0-preview"
+    ]
+  }
+]
