@@ -47,14 +47,17 @@ internal class Program
                 }
             }
 
-            var serOptions = new JsonSerializerOptions
+            if (packages.Count > 0)
             {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-            using var createStream = File.Create(indexOutputPath);
-            await JsonSerializer.SerializeAsync(createStream, packages, serOptions);
-            await createStream.DisposeAsync();
+                var serOptions = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                };
+                using var createStream = File.Create(indexOutputPath);
+                await JsonSerializer.SerializeAsync(createStream, packages, serOptions);
+                await createStream.DisposeAsync();
+            }
 
             Console.WriteLine("Index build finished");
         }
